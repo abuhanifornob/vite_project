@@ -1,0 +1,52 @@
+{
+  "shoes": [
+    {
+      "id": "1",
+      "title": "Wireless Noise Cancelling Headphones",
+      "price": 299.99,
+      "brand": "AudioTech",
+      "description": "Experience high-fidelity sound with superior noise cancellation technology.",
+      "img_url": "https://example.com/images/headphones.jpg"
+    },
+    {
+      "id": "2",
+      "title": "4K Ultra HD Smart TV",
+      "price": "1200",
+      "brand": "VisionPlus",
+      "description": "Enjoy stunning picture quality and vibrant colors with this 65-inch 4K Ultra HD Smart TV.",
+      "img_url": "https://example.com/images/tv.jpg"
+    },
+    {
+      "id": "3",
+      "title": "Portable Bluetooth Speaker",
+      "price": "59.99",
+      "brand": "SoundWave",
+      "description": "Compact and powerful, this portable Bluetooth speaker delivers impressive sound quality.",
+      "img_url": "https://example.com/images/speaker.jpg"
+    },
+    {
+      "id": "4",
+      "title": "Smart Home Security Camera",
+      "price": 129.99,
+      "brand": "SecureHome",
+      "description": "Keep your home safe with this high-definition smart home security camera with night vision.",
+      "img_url": "https://example.com/images/security_camera.jpg"
+    },
+    {
+      "id": "5",
+      "title": "Fitness Tracker Watch",
+      "price": 79.99,
+      "brand": "FitTrack",
+      "description": "Monitor your health and activity levels with this stylish and functional fitness tracker watch.",
+      "img_url": "https://example.com/images/fitness_tracker.jpg"
+    },
+    {
+      "id": "6",
+      "title": "Smartphone with Triple Camera",
+      "price": 699.99,
+      "brand": "PhoneMax",
+      "description": "Capture stunning photos and enjoy fast performance with this smartphone's triple camera system.",
+      "img_url": "https://example.com/images/smartphone.jpg"
+    }
+  ]
+}
