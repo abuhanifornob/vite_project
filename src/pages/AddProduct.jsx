@@ -6,10 +6,11 @@ const AddProduct = () => {
     const brand = form.brand.value;
     const price = form.price.value;
     const description = form.description.value;
-    const image_url = form.imge_url.vlaue;
-    const id = form.id.value;
-    const data = { id, title, brand, price, description, image_url };
-    await fetch("http://localhost:3000/shoes/", {
+    const imageUurl = form.image_url.value;
+
+    const data = { title, brand, price, description, imageUurl };
+    console.log(data);
+    await fetch("http://localhost:3001/shoes/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -66,18 +67,11 @@ const AddProduct = () => {
             <input
               className="w-full text-lg p-2 bg-gray-100 border-black rounded-lg"
               type="text"
-              name="imge_url"
+              name="image_url"
               placeholder="Imges URL"
             />
           </div>
-          <div className="mt-2">
-            <input
-              className="w-full text-lg p-2 bg-gray-100 border-black rounded-lg"
-              type="text"
-              name="id"
-              placeholder="ID"
-            />
-          </div>
+
           <div className="flex justify-center items-center mt-2">
             <input
               className="btn w-full bg-green-400 text-white text-2xl"
