@@ -5,10 +5,11 @@ import DashboardSingleProduct from "../components/dashboard/DashboardSingleProdu
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3000/shoes/")
+    fetch("http://localhost:3001/shoes")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
+  console.log(products);
   const handleDeleteProduct = (id) => {
     setProducts(products.filter((product) => product.id !== id));
   };
