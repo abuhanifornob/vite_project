@@ -1,3 +1,5 @@
+import toast from "react-hot-toast";
+
 const AddProduct = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -10,7 +12,7 @@ const AddProduct = () => {
 
     const data = { title, brand, price, description, imageUurl };
     console.log(data);
-    await fetch("http://localhost:3001/shoes/", {
+    await fetch("http://localhost:5000/shoes/", {
       method: "POST",
       headers: {
         "Content-type": "application/json",
@@ -18,8 +20,8 @@ const AddProduct = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
+      .then(() => {
+        toast.success("Product add Success");
         form.reset();
       });
   };

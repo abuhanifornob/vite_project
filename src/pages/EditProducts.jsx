@@ -1,10 +1,10 @@
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 
 const EditProducts = () => {
   const editProduct = useLoaderData();
   // eslint-disable-next-line no-unused-vars
-  const { id, brand, img_url, description, price, title } = editProduct;
-  console.log(editProduct);
+  const { brand, img_url, description, price, title } = editProduct;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -14,10 +14,10 @@ const EditProducts = () => {
     const price = form.price.value;
     const description = form.description.value;
     const image_url = form.imge_url.vlaue;
-    const id = form.id.value;
-    const data = { id, title, brand, price, description, image_url };
-    console.log(data);
-    await fetch(`http://localhost:3000/shoes/${editProduct.id}`, {
+
+    const data = { title, brand, price, description, image_url };
+
+    await fetch(`http://localhost:5000/shoe/${editProduct._id}`, {
       method: "PATCH",
       headers: {
         "Content-type": "application/json",
@@ -25,7 +25,10 @@ const EditProducts = () => {
       body: JSON.stringify(data),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data));
+      .then(() => {
+        form.reset();
+        toast.success("Data Update is Successful");
+      });
   };
 
   return (
@@ -80,15 +83,7 @@ const EditProducts = () => {
               defaultValue={img_url}
             />
           </div>
-          <div className="mt-2">
-            <input
-              className="w-full text-lg p-2 bg-gray-100 border-black rounded-lg"
-              type="text"
-              name="id"
-              placeholder="ID"
-              defaultValue={id}
-            />
-          </div>
+
           <div className="flex justify-center items-center mt-2">
             <input
               className="btn w-full bg-green-400 text-white text-2xl"

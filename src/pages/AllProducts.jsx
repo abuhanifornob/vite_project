@@ -5,13 +5,13 @@ import DashboardSingleProduct from "../components/dashboard/DashboardSingleProdu
 const AllProducts = () => {
   const [products, setProducts] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:3001/shoes")
+    fetch("http://localhost:5000/shoes")
       .then((res) => res.json())
       .then((data) => setProducts(data));
   }, []);
   console.log(products);
   const handleDeleteProduct = (id) => {
-    setProducts(products.filter((product) => product.id !== id));
+    setProducts(products.filter((product) => product._id !== id));
   };
   return (
     <div>
@@ -21,7 +21,7 @@ const AllProducts = () => {
       <div className="flex flex-wrap gap-3 justify-evenly justify-items-center">
         {products.map((shoe) => (
           <DashboardSingleProduct
-            key={shoe.id}
+            key={shoe._id}
             shoe={shoe}
             onDelete={handleDeleteProduct}
           />

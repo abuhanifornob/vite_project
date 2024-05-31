@@ -23,13 +23,13 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:3000/shoes"),
+        loader: () => fetch("http://localhost:5000/shoes"),
       },
       {
         path: "/product/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/shoes/${params.id}`),
+          fetch(`http://localhost:5000/shoe/${params.id}`),
       },
       {
         path: "/about",
@@ -86,7 +86,7 @@ export const router = createBrowserRouter([
           </PrivetRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:3000/shoes/${params.id}`),
+          fetch(`http://localhost:5000/shoe/${params.id}`),
       },
     ],
   },

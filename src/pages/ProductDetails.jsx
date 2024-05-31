@@ -3,7 +3,7 @@ import { useLoaderData } from "react-router-dom";
 
 const ProductDetails = () => {
   const shoe = useLoaderData();
-  const { id, brand, description, img_url, price, title } = shoe;
+  const { brand, description, img_url, price, title } = shoe;
   return (
     <div className=" w-[1000px] mx-auto my-10 ">
       <h1 className="text-4xl text-center font-bold my-4">

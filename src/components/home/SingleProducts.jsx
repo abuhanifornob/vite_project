@@ -2,7 +2,7 @@
 /* eslint-disable react/prop-types */
 import { Link } from "react-router-dom";
 const SingleProducts = ({ show }) => {
-  const { id, brand, description, img_url, price, title } = show;
+  const { _id, brand, description, price, title } = show;
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
@@ -20,7 +20,7 @@ const SingleProducts = ({ show }) => {
         <p>{description}</p>
         <div className="card-actions justify-end">
           <button className="btn btn-primary">
-            <Link to={`/product/${id}`}>See Details</Link>
+            <Link to={`/product/${_id}`}>See Details</Link>
           </button>
         </div>
       </div>
