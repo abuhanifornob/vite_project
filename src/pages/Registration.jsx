@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../hooks/useAuth";
+import GoogleRegister from "../components/login_register/GoogleRegister";
 
 const Registration = () => {
   const [passMatch, setPassMatch] = useState(true);
@@ -12,6 +13,7 @@ const Registration = () => {
     e.preventDefault();
     const form = e.target;
     const email = form.email.value;
+    const name = form.name.value;
     const password = form.password.value;
     const confirmPassword = form.confirmPassword.value;
     console.log(email, password, confirmPassword);
@@ -21,14 +23,26 @@ const Registration = () => {
     }
 
     await createNewUser(email, password)
-      .then(() => {
+      .then((data) => {
+        const userInfo = {
+          name: name,
+          email: data?.user?.email,
+        };
+        console.log(userInfo);
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify(userInfo),
+        })
+          .then((res) => res.json())
+          .then((data) => console.log(data));
+
         navigate(from);
       })
       .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        console.log(errorMessage);
-        console.log(errorCode);
+        console.log(error);
       });
   };
   return (
@@ -44,6 +58,18 @@ const Registration = () => {
         </div>
         <div className="card w-full lg:w-1/2 shadow-2xl bg-base-100">
           <form onSubmit={handleSubmit} className="card-body">
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">User Name</span>
+              </label>
+              <input
+                type="text"
+                name="name"
+                placeholder="User Name"
+                className="input input-bordered"
+                required
+              />
+            </div>
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
@@ -62,7 +88,7 @@ const Registration = () => {
               </label>
               <input
                 type="password"
-                name="confirmPassword"
+                name="password"
                 placeholder="confirmPassword"
                 className="input input-bordered"
                 required
@@ -74,7 +100,7 @@ const Registration = () => {
               </label>
               <input
                 type="password"
-                name="password"
+                name="confirmPassword"
                 placeholder="password"
                 className="input input-bordered"
                 required
@@ -99,6 +125,9 @@ const Registration = () => {
               </p>
             </div>
           </form>
+          <div className="mt-6 mx-6 mb-2 ">
+            <GoogleRegister />
+          </div>
         </div>
       </div>
     </div>
