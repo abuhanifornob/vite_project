@@ -6,13 +6,16 @@ import Login from "../pages/Login";
 import Logout from "../pages/Logout";
 import ErrorPage from "../pages/ErrorPage";
 import DashboardLayout from "../layouts/DashboardLayout";
-import Dashboard from "../pages/Dashboard";
+
 import Registration from "../pages/Registration";
 import PrivetRoute from "./privet/PrivetRoute";
 import ProductDetails from "../pages/ProductDetails";
 import AllProducts from "../pages/AllProducts";
 import AddProduct from "../pages/AddProduct";
 import EditProducts from "../pages/EditProducts";
+
+import DashboardHome from "../pages/DashboardHome";
+import ProfileEdit from "../pages/ProfileEdit";
 
 export const router = createBrowserRouter([
   {
@@ -51,14 +54,18 @@ export const router = createBrowserRouter([
   },
   {
     path: "dashboard",
-    element: <DashboardLayout />,
+    element: (
+      <PrivetRoute>
+        <DashboardLayout />
+      </PrivetRoute>
+    ),
     errorElement: <ErrorPage />,
     children: [
       {
-        path: "",
+        path: "home",
         element: (
           <PrivetRoute>
-            <Dashboard />
+            <DashboardHome />
           </PrivetRoute>
         ),
       },
@@ -77,6 +84,16 @@ export const router = createBrowserRouter([
             <AddProduct />
           </PrivetRoute>
         ),
+      },
+      {
+        path: "home/edit-user/:id",
+        element: (
+          <PrivetRoute>
+            <ProfileEdit />
+          </PrivetRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/users/get/${params.id}`),
       },
       {
         path: "allproducts/edit-product/:id",
